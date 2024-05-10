@@ -10,4 +10,9 @@ class Department extends Model
     use HasFactory;
 
     protected $fillable = ['name'];
+
+    public function professors()  //ที่โมเดลคณะไปเรียกโมเดลอาจารย์
+    {
+        return $this->hasMany(Professor::class, 'department_id');
+    }
 }
