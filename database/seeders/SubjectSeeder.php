@@ -24,11 +24,16 @@ class SubjectSeeder extends Seeder
 
         ]);
 
+        $subject = Subject::first();
+        $subject->professors()->attach(Professor::first()->id ?? Professor::factory());
+
         Subject::factory()->count(20)->create();
 
         $subjects = Subject::all();
         foreach($subjects as $subject){
           $subject->professors()->attach(Professor::inRandomOrder()->first()->id);   //attach การจับมาคู่กัน อาจารย์หลายคนสอนได้หลายวิชา และวิชาก็มีอาจารย์สอนได้หลายคน ดูใน professor_subject_table
         }
+
+        //$professor->subjects()->attach(1); อาจารย์สอนวิชาที่
     }
 }
