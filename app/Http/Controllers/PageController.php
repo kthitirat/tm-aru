@@ -14,7 +14,9 @@ class PageController extends Controller
 {
     public function index()
     {
-        $subjects = Subject::with('professors')->paginate(10);
+        $subjects = Subject::with('professors')
+            ->whereNotNull('published_at')
+            ->paginate(50);
         $subjectsData = fractal($subjects,new SubjectTransformer())->toArray();
         return Inertia::render('Index')->with([
             'subjects' => $subjectsData

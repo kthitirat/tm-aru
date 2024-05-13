@@ -6,8 +6,9 @@
                 <h1 class="text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold text-blue-600">(PowerPoint)</h1>
             </div>
             <div class="grid grid-cols-4 gap-8 px-20 mt-10">
-                <TeachingMaterialCard />
-
+                <div v-for="(subject,index) in subjectData" :key="subject.id">
+                    <TeachingMaterialCard :subject="subject" />
+                </div>
             </div>
         </div>
     </Layout>
@@ -31,12 +32,19 @@ export default {
 
     },
     data() {
+        return{
+            subjectData: null,
+            subjectPagination: null,
+        };
 
     },
     mounted() {
-        console.log('---------------');
-        console.log(this.subjects);
-        console.log('---------------');
+        this.subjectData = this.subjects.data
+        this.subjectPagination = this.subjects.meta.pagination;
+
+        // console.log('---------------');
+        // console.log(this.subjectPagination);
+        // console.log('---------------');
     },
     methods: {
 
