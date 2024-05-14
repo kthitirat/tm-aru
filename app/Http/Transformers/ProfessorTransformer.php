@@ -32,9 +32,10 @@ class ProfessorTransformer extends TransformerAbstract
         return $data;
     }
 
-    public function includeDocuments(Announcement $announcement)
+    public function includeImage(Professor $professor)
     {
-        $documents = $announcement->getMedia(Announcement::MEDIA_COLLECTION_DOCUMENTS);
-        return $this->collection($documents, new AnnouncementDocumentTransformer());
+        $images = $professor->getMedia(Professor::MEDIA_COLLECTION_IMAGE);
+        return $this->collection($images, new ImageTransformer());
     }
+
 }
