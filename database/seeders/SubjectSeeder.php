@@ -31,8 +31,11 @@ class SubjectSeeder extends Seeder
 
         $subjects = Subject::all();
         foreach($subjects as $subject){
-          $subject->professors()->attach(Professor::inRandomOrder()->first()->id);   //attach การจับมาคู่กัน อาจารย์หลายคนสอนได้หลายวิชา และวิชาก็มีอาจารย์สอนได้หลายคน ดูใน professor_subject_table
+            $subject->professors()->attach(Professor::inRandomOrder()->first()->id);   //attach การจับมาคู่กัน อาจารย์หลายคนสอนได้หลายวิชา และวิชาก็มีอาจารย์สอนได้หลายคน ดูใน professor_subject_table
+            $subject->addMedia(storage_path('seed/mock_subject_image.jpeg'))->preservingOriginal()
+            ->toMediaCollection(Subject::MEDIA_COLLECTION_IMAGE);
         }
+
 
         //$professor->subjects()->attach(1); อาจารย์สอนวิชาที่
     }

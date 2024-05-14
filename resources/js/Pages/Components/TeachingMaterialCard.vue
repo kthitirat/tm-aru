@@ -1,8 +1,8 @@
 <template>
     <div
         @click="visitSubject"
-        class="w-full h-[650px] border border-slate-200 p-4 font-bold text-gray-700 hover:text-blue-600 hover:shadow-lg transition-all ease-in-out duration-500 cursor-pointer relative" >
-        <img class="w-full h-100 object-cover" src="	https://www.aru.ac.th/aru-tm/images/S__27254823.jpg">
+        class="w-full h-[660px] border border-slate-200 p-4 font-bold text-gray-700 hover:text-blue-600 hover:shadow-lg transition-all ease-in-out duration-500 cursor-pointer relative" >
+        <img v-if="subject.image.data.length > 0" :src="subject.image.data[0].url" class="w-full h-100 object-cover">
         <div class="mt-2">
             <p class="text-lg text-center leading-5">
                 รายวิชา {{subject.code}} {{subject.name_th}}
