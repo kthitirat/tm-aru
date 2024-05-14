@@ -17,6 +17,8 @@ class Subject extends Model implements HasMedia
 
     public const MEDIA_COLLECTION_IMAGE = 'image';
 
+    public const MEDIA_COLLECTION_DOCUMENTS = 'documents';
+
     protected $fillable = [      //ส่วนนี้saveลงฐานข้อมูล
         'name_th',         // Text field for Thai name
         'name_en',         // Text field for English name
@@ -42,6 +44,8 @@ class Subject extends Model implements HasMedia
                         ->optimize()
                         ->keepOriginalImageFormat();
             });
+
+            $this->addMediaCollection(self::MEDIA_COLLECTION_DOCUMENTS);
     }
 
     public function professors()
