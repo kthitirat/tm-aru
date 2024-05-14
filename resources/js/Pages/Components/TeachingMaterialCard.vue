@@ -9,7 +9,7 @@
             </p>
             <div class="text-sm text-center mt-4 text-gray-700 font-normal flex flex-col">
                 <div v-for="professor in subject.professors" :key="professor.id">
-                    <p> อาจารย์ {{professor.prefix}} {{professor.first_name}} {{professor.last_name}}</p>
+                    <p>อาจารย์ {{professor.prefix}} {{professor.first_name}} {{professor.last_name}}</p>
                     <p>สาขาวิชา {{professor.major}}</p>
                     <p>คณะ {{professor.department.name}}</p>
                 </div>

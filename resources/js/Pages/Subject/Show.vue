@@ -8,16 +8,55 @@
             </div>
 
             <div class="col-span-8">
-                <div class="w-full bg-white shadow-lg h-80 px-8 pt-4">
+                <div class="card w-full bg-base-100 shadow-xl">
+                    <div class="card-body">
+                        <h2 class="text-2xl font-bold pb-4 border-l-0 border-t-0 border-r-0 text-gray-700">
+                            รายวิชา {{subject.code}} {{ subject.name_th }}
+                        </h2>
+                        <div class="mt-2 w-full">
+                        <p class="font-bold">อาจารย์ผู้สอน: </p>
+                        <div v-for="professor in subject.professors" :key="professor.id" class="flex gap-1">
+                             <p class="ml-8">อาจารย์ {{ professor.first_name}} {{ professor.last_name}}</p>
+                             <p class="ml-8">สาขาวิชา {{ professor.major}}</p>
+                             <p v-if="subject.professors.length > 1" class="ml-8">คณะ {{ professor.department.name}}</p>
+                        </div>
+                        </div>
+                        <div v-if="subject.professors.length === 1" class="mt-2 w-full">
+                            <p class="font-bold">คณะ: </p>
+                            <div class="flex gap-1">
+                                <p class="ml-8">{{ subject.professors[0].department.name }}</p>
+                            </div>
+                        </div>
+                        <div class="mt-2 w-full">
+                                <p class="font-bold">วันที่เผยแพร่: </p>
+                                <div class="flex gap-1">
+                                    <p class="ml-8">วันที่ {{subject.published_at}}</p>
+                                </div>
+                        </div>
+                        <div class="mt-2 w-full">
+                                <p class="font-bold">จำนวนการเข้าชม: </p>
+                                <div class="flex gap-1">
+                                    <p class="ml-8">{{ subject.view}} ครั้ง</p>
+                                </div>
+                        </div>
+
+
+
+                        <!-- <div class="card-actions justify-end">
+                        </div> -->
+                    </div>
+                </div>
+
+                <!-- <div class="w-full bg-white shadow-lg h-80 px-8 pt-4">
                     <h1 class="text-2xl font-bold pb-4 border-l-0 border-t-0 border-r-0 text-gray-700">
-                        รายวิชา {{ subject.name_th }}
+                        รายวิชา {{subject.code}} {{ subject.name_th }}
                     </h1>
                     <div class="mt-2 w-full">
                         <p class="font-bold">อาจารย์ผู้สอน: </p>
                         <div v-for="professor in subject.professors" :key="professor.id" class="flex gap-1">
                              <p class="ml-8">อาจารย์ {{ professor.first_name}} {{ professor.last_name}}</p>
                              <p class="ml-8">สาขาวิชา {{ professor.major}}</p>
-                             <p v-if="subject.professors.length > 1" class="ml-8"> คณะ {{ professor.department.name}}</p>
+                             <p v-if="subject.professors.length > 1" class="ml-8">คณะ {{ professor.department.name}}</p>
                         </div>
                     </div>
                     <div v-if="subject.professors.length === 1" class="mt-2 w-full">
@@ -26,19 +65,20 @@
                                 <p class="ml-8">{{ subject.professors[0].department.name }}</p>
                             </div>
                     </div>
-                     <div class="mt-2 w-full">
+                    <div class="mt-2 w-full">
                             <p class="font-bold">วันที่เผยแพร่: </p>
-                            <div class="flex gap-2">
+                            <div class="flex gap-1">
                                 <p class="ml-8">วันที่ {{subject.published_at}}</p>
                             </div>
                     </div>
                       <div class="mt-2 w-full">
                             <p class="font-bold">จำนวนการเข้าชม: </p>
-                            <div class="flex gap-2">
+                            <div class="flex gap-1">
                                 <p class="ml-8">{{ subject.view}} ครั้ง</p>
                             </div>
                     </div>
-                </div>
+                </div> -->
+
                 <div class="mt-8">
                     <h2 class="font-bold text-gray-700 texl-2xl">
                         คำอธิบายรายวิชา
