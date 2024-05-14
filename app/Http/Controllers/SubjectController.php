@@ -20,7 +20,7 @@ class SubjectController extends Controller
         if($subject->published_at === null) {
             abort(403, 'unauthorized.');
         }
-        $subjectData = fractal($subject, new SubjectTransformer())->toArray();
+        //$subjectData = fractal($subject, new SubjectTransformer())->toArray(); ย้ายลงไปข้างล่าง
         // $subject->view = $subject->view + 1;
         // $subject->save();
         $userIp = (string)request()->ip();
@@ -29,6 +29,8 @@ class SubjectController extends Controller
             $subject->increment('view');
         }
         Session::put($transformUserIP, $subject->id);
+        $subject->fresh();
+        $subjectData = fractal($subject, new SubjectTransformer())->toArray();
         return Inertia::render('Subject/Show')->with([
             'subject' => $subjectData
         ]);
@@ -36,6 +38,7 @@ class SubjectController extends Controller
 
     private function checkSessionByIp($transformUserIP, $subjectId)
     {
+
         if(Session::get($transformUserIP) === $subjectId){
             return true;
         }
