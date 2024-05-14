@@ -10,7 +10,7 @@ use Phattarachai\ThaiDate\ThaiDate;
 
 class ProfessorTransformer extends TransformerAbstract
 {
-    protected array $availableIncludes = ['documents'];
+    protected array $availableIncludes = ['image'];
 
     public function transform(Professor $professor): array
     {
@@ -32,7 +32,7 @@ class ProfessorTransformer extends TransformerAbstract
         return $data;
     }
 
-    public function includeImage(Professor $professor)
+    public function includeImage(professor $professor)
     {
         $images = $professor->getMedia(Professor::MEDIA_COLLECTION_IMAGE);
         return $this->collection($images, new ImageTransformer());
