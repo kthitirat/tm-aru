@@ -3,14 +3,14 @@
         <nav class="bg-blue-300 fixed top-0 z-30 w-full">
             <div class="navbar">
                 <div class="flex-1">
-                    <a class="btn btn-ghost text-xl">Logo</a>
+                    <a class="btn btn-ghost text-xl">ARUTeaching Materials</a>
                 </div>
                 <div class="flex-none gap-2">
                     <div class="dropdown dropdown-end">
                         <div class="btn btn-ghost btn-circle avatar" role="button" tabindex="0">
                             <div class="w-10 rounded-full">
-                                <img alt="Tailwind CSS Navbar component"
-                                     src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"/>
+                                <!-- <img alt="Tailwind CSS Navbar component"
+                                     src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"/> -->
                             </div>
                         </div>
                         <ul class="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52"

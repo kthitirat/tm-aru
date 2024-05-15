@@ -2,7 +2,7 @@
     <Layout>
         <div class="w-full grid grid-cols-12 gap-4">
             <div class="col-span-4">
-                <div class="w-full px-20 grid grid-cols-2 gap-2">
+                <div class="w-full px-5 sm:grid-cols-1 md:px-20 grid grid-cols-2 md:grid-cols-6 lg:grid-cols-2 gap-4">
                     <div v-for="(professor,index) in subject.professors"
                         :class="subject.professors.length === 1 ? 'col-span-2 row-span-2':''"
                     >
@@ -10,7 +10,6 @@
                         :src="professor.image.data[0].url"
                         class="w-full object-cover">
                     </div>
-
                 </div>
             </div>
 
@@ -96,7 +95,7 @@
                     <p>
                         {{ subject.name_en }}
                     </p>
-                    <p>
+                    <p class="md:grid grid-cols-1">
                         {{ subject.description}}
                     </p>
                 </div>
