@@ -1,12 +1,25 @@
 <template>
     <Layout>
-        <form @submit.prevent="submit" class="w-full grid grid-cols-3 gap-4">
+        <form  class="w-full grid grid-cols-3 gap-4" @submit.prevent="submit">
+            <div class="col-span-3 w-full">
+                <button @click="$refs.imageInputRef.click()" type="button" class="w-60 h-72 border border-dashed flex items-center justify-center">
+                    <div v-if="displaySubjectImage === null">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-Width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 4.5v15m7.5-7.5h-15" strokeLinejoin="round" strokeLinecap="round"/>
+                        </svg>
+
+                    </div>
+                    <img v-if="displaySubjectImage!=null" :src="displaySubjectImage" class="w-full h-72  object-cover" >
+                </button>
+                <input @change="handleSubjectImage" ref="imageInputRef" accept="image/*" class="hidden" type="file" >
+            </div>
+
             <div class="w-full">
             <label class="form-control w-full">
                 <div class="label">
                     <span class="label-text">รหัสวิชา</span>
                 </div>
-                <input class="input input-bordered w-full" placeholder="รหัสวิชา" type="text"  />
+                <input v-model="form.code" class="input input-bordered w-full" placeholder="รหัสวิชา" type="text"  />
             </label>
             </div>
 
@@ -15,7 +28,7 @@
                 <div class="label">
                     <span class="label-text">ชื่อวิชา(ภาษาไทย)</span>
                 </div>
-                <input class="input input-bordered w-full" placeholder="ชื่อวิชา(ภาษาไทย)" type="text"  />
+                <input v-model="form.name_th" class="input input-bordered w-full" placeholder="ชื่อวิชา(ภาษาไทย)" type="text"  />
             </label>
             </div>
 
@@ -24,7 +37,7 @@
                 <div class="label">
                     <span class="label-text">ชื่อวิชา(ภาษาอังกฤษ)</span>
                 </div>
-                <input class="input input-bordered w-full" placeholder="ชื่อวิชา(ภาษาอังกฤษ)" type="text"  />
+                <input v-model="form.name_en" class="input input-bordered w-full" placeholder="ชื่อวิชา(ภาษาอังกฤษ)" type="text"  />
             </label>
             </div>
 
@@ -33,7 +46,7 @@
                 <div class="label">
                     <span class="label-text">หน่วยกิต</span>
                 </div>
-                <input class="input input-bordered w-full" placeholder="เช่น 3(3-0-6)" type="text"  />
+                <input v-model="form.unit" class="input input-bordered w-full" placeholder="เช่น 3(3-0-6)" type="text"  />
             </label>
             </div>
 
@@ -42,7 +55,7 @@
                 <div class="label">
                     <span class="label-text">วันที่เผยแพร่</span>
                 </div>
-                <input class="input input-bordered w-full" placeholder="" type="date"  />
+                <input v-model="form.published_at" class="input input-bordered w-full" placeholder="" type="date"  />
             </label>
             </div>
 
@@ -51,7 +64,7 @@
                     <div class="label">
                         <span class="label-text">คำอธิบายรายวิชา</span>
                     </div>
-                    <textarea rows="5" placeholder="คำอธิบายรายวิชา" class="textarea textarea-bordered textarea-md w-full" ></textarea>
+                    <textarea v-model="form.description" rows="5" placeholder="คำอธิบายรายวิชา" class="textarea textarea-bordered textarea-md w-full" ></textarea>
                 </label>
 
             </div>
@@ -61,21 +74,21 @@
                     <div class="label">
                         <span class="label-text">เลือกอาจารย์</span>
                     </div>
-                    <select class="select select-bordered">
-                        <option disabled selected>Pick one</option>
-                        <option>Star Wars</option>
-                        <option>Harry Potter</option>
-                        <option>Lord of the Rings</option>
-                        <option>Planet of the Apes</option>
-                        <option>Star Trek</option>
+                    <select v-model="currentSelectingProfessor" class="select select-bordered"
+                            @change="handSelectProfessor">
+                        <option value="">เลือกอาจารย์</option>
+                        <option v-for="professor in professors" :key="professor.id" :value="professor">
+                            {{ professor.prefix }}  {{ professor.first_name }}  {{ professor.last_name }}
+                        </option>
                     </select>
                 </label>
-                <div class="w-full flex gap-4 mt-4">
-                    <div class="w-40 border flex flex-col pb-2 relative">
-                        <img class="object-cover w-full h-40" src="https://www.aru.ac.th/aru-tm/images/IMG_E4314.jpg">
+                <div v-if="form.professors.length > 0" class="w-full flex gap-4 mt-4">
+                    <div v-for="professor in form.professors" :key="professor.id" class="w-40 border flex flex-col pb-2 relative">
+                        <img v-if="professor.image" class="object-cover w-full h-45" :src="professor.image.data[0].url">
                         <div class="text-xs text-center leading-4 mt-2">
-                            <p>อาจารย์ ดร.มรุต กลัดเจริญ</p>
-                            <p>คณะวิทยาการจัดการ</p>
+                            <p>{{ professor.prefix }} {{ professor.first_name }}  {{ professor.last_name }}</p>
+                            <p>{{ professor.major }}</p>
+                            <p>{{ professor.department.name }}</p>
                         </div>
                         <button type="button" class="absolute top-1 right-1 text-red-500">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
@@ -83,20 +96,6 @@
                             </svg>
                         </button>
                     </div>
-
-                    <div class="w-40 border flex flex-col pb-2 relative">
-                        <img class="object-cover w-full h-40" src="https://www.aru.ac.th/aru-tm/images/IMG_E4314.jpg">
-                        <div class="text-xs text-center leading-4 mt-2">
-                            <p>อาจารย์ ดร.มรุต กลัดเจริญ</p>
-                            <p>คณะวิทยาการจัดการ</p>
-                        </div>
-                        <button type="button" class="absolute top-1 right-1 text-red-500">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M15 12H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                            </svg>
-                        </button>
-                    </div>
-
                 </div>
             </div>
 
@@ -140,6 +139,7 @@
 
 <script>
 import Layout from "@/Pages/Dashboard/Layout/Layout.vue";
+import { router } from '@inertiajs/vue3'
 
 
 export default {
@@ -147,16 +147,63 @@ export default {
     components:{
         Layout
     },
-    // data(){
-    //     return{
-    //         form:{
-
-    //         }
-    //     }
-    // },
+    props:{
+        professors:{
+            type:Array,
+            required:true
+        }
+    },
+    data(){
+        return{
+            form:{
+                image: null,
+                code: null,
+                name_th: null,
+                name_en: null,
+                unit: null,
+                published_at:null,
+                description: null,
+                professors: [],
+                documents: []
+            },
+            displaySubjectImage: null,
+            currentSelectingProfessor: ""
+        }
+    },
+    mounted(){
+        // console.log('..............');
+        // console.log('this.professors');
+        // console.log('..............');
+    },
     methods:{
+        handSelectProfessor() {
+            this.form.professors.push(this.currentSelectingProfessor);
+            this.currentSelectingProfessor =  "";
+        },
+        handleSubjectImage(event) {
+            const image = event.target.files[0];
+            this.form.image = image;
+            const blob = new Blob([image], {type:image.type});
+            const blobUrl = URL.createObjectURL(blob);
+            this.displaySubjectImage = blobUrl;
 
+        },
+        submit(){
+            const url = this.router('dashboard.subjects.store')
+            router.post(url, {
+                _method: 'post',
+                name_th: form.name_th,
+                })
+        }
+    },
+    watch:{
+        form:{
+            handler: function(){
+            },
+            deep: true
+        }
     }
+
 }
 </script>
 
