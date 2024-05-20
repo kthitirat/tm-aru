@@ -12,23 +12,22 @@ class SubjectController extends Controller
 {
     public function index()
     {
-        return Inertia::render('Dashboard/Subject/Index')->with([
-
-        ]);
+        return Inertia::render('Dashboard/Subject/Index')->with([]);
     }
 
     public function create()
     {
-        $professors = Professor::all();
-        $professorData = fractal($professors, new ProfessorTransformer())->includeImage()->toArray()['data'];
-        return Inertia::render('Dashboard/Subject/Create')->with([
-            'professors' => $professorData
-        ]);
+
+            $professors = Professor::all();
+            $professorData = fractal($professors, new ProfessorTransformer())->includeImage()->toArray()['data'];
+            return Inertia::render('Dashboard/Subject/Create')->with([
+                'professors' => $professorData
+            ]);
     }
 
-    public function store(Request $request)
-    {
-        dd($request);
-    }
+    // public function store(Request $request)
+    // {
+    //     dd($request);
+    // }
 
 }

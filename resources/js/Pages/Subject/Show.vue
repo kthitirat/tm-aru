@@ -4,8 +4,7 @@
             <div class="col-span-4">
                 <div class="w-full px-5 sm:grid-cols-1 md:px-20 grid grid-cols-2 md:grid-cols-6 lg:grid-cols-2 gap-4">
                     <div v-for="(professor,index) in subject.professors"
-                        :class="subject.professors.length === 1 ? 'col-span-2 row-span-2':''"
-                    >
+                        :class="subject.professors.length === 1 ? 'col-span-2 row-span-2':''">
                         <img v-if="professor.image.data.length > 0"
                         :src="professor.image.data[0].url"
                         class="w-full object-cover">
@@ -45,8 +44,6 @@
                                     <p class="ml-8">{{ subject.view}} ครั้ง</p>
                                 </div>
                         </div>
-
-
 
                         <!-- <div class="card-actions justify-end">
                         </div> -->
