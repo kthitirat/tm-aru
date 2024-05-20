@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 use App\Http\Transformers\ProfessorTransformer;
+use App\Http\Transformers\SubjectTransformer;
 use App\Models\Professor;
+use App\Models\Subject;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -25,9 +27,9 @@ class SubjectController extends Controller
             ]);
     }
 
-    // public function store(Request $request)
-    // {
-    //     dd($request);
-    // }
+    public function store(Request $request)
+    {
+        dd($request->all());
+    }
 
 }
