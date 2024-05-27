@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\Dashboard;
 
+use App\Actions\Dashboard\SaveSubjectAction;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Dashboard\CreateOrUpdateSubjectRequest;
 use App\Http\Transformers\ProfessorTransformer;
 use App\Http\Transformers\SubjectTransformer;
 use App\Models\Professor;
@@ -27,9 +29,12 @@ class SubjectController extends Controller
             ]);
     }
 
-    public function store(Request $request)
+    public function store(CreateOrUpdateSubjectRequest $request, SaveSubjectAction $action)
     {
-        dd($request->all());
+        $newSubject = $action->execute(new Subject(), $request->validated());
+        $newSubjectData = fractal($newSubject, new SubjectTransformer())->includeImage()->includeDocuments()->toArray();
+        return redirect()->route('dashboard.subjects.index');
+
     }
 
 }
