@@ -16,17 +16,21 @@ class SubjectController extends Controller
 {
     public function index()
     {
-        return Inertia::render('Dashboard/Subject/Index')->with([]);
+        $subjects = Subject::orderBy('published_at', 'desc')->paginate(20);
+        $subjectData = fractal($subjects, new SubjectTransformer())->includeImage()->toArray();
+        return Inertia::render('Dashboard/Subject/Index')->with([
+            'subjects' => $subjectData
+        ]);
     }
 
     public function create()
     {
 
-            $professors = Professor::all();
-            $professorData = fractal($professors, new ProfessorTransformer())->includeImage()->toArray()['data'];
-            return Inertia::render('Dashboard/Subject/Create')->with([
-                'professors' => $professorData
-            ]);
+        $professors = Professor::all();
+        $professorData = fractal($professors, new ProfessorTransformer())->includeImage()->toArray()['data'];
+        return Inertia::render('Dashboard/Subject/Create')->with([
+            'professors' => $professorData
+        ]);
     }
 
     public function store(CreateOrUpdateSubjectRequest $request, SaveSubjectAction $action)
