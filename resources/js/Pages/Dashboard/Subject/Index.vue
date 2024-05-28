@@ -10,7 +10,6 @@
                     <th class="px-6 py-3">ชื่อวิชา</th>
                     <th class="px-6 py-3">วันที่เผยแพร่</th>
                     <th class="px-6 py-3">อาจารย์</th>
-
                     <th class="px-6 py-3">Action</th>
                 </tr>
                 </thead>
@@ -28,9 +27,10 @@
                         {{ subject.code }}
                     </td>
                     <td>
-                        <p>{{ subject.name_th }}</p>
-                        <p>{{ subject.name_en }}</p>
-
+                        <Link :href="route('dashboard.subjects.edit',subject.raw_id)">
+                            <p>{{ subject.name_th }}</p>
+                            <p>{{ subject.name_en }}</p>
+                        </Link>
                     </td>
 
                     <td>
@@ -42,6 +42,11 @@
                                 {{ professor.prefix }} {{ professor.first_name }} {{ professor.last_name }}
                             </p>
                         </div>
+                    </td>
+                    <td>
+                        <button class="btn btn-error text-white btn-sm" type="button" >
+                            Delete
+                        </button>
                     </td>
 
 
@@ -66,11 +71,12 @@
 
 <script>
 import Layout from "@/Pages/Dashboard/Layout/Layout.vue";
-//import {Inertia} from "@inertiajs/inertia";
-//import {Link, router, useForm} from "@inertiajs/vue3";
+import {Inertia} from "@inertiajs/inertia";
+import {Link} from "@inertiajs/vue3";
 export default {
     name:"SubjectIndex",
     components:{
+        Link,
         Layout
     },
     props: {
