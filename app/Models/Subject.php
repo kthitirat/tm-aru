@@ -11,10 +11,12 @@ use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Illuminate\Support\Str;
 
+
 class Subject extends Model implements HasMedia
 {
     use HasFactory;
     use InteractsWithMedia;
+
 
     public const MEDIA_COLLECTION_IMAGE = 'image';
 

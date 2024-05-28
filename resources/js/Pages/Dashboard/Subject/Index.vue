@@ -96,9 +96,9 @@ export default {
         this.subjectData = this.subjects.data;
         this.pagination = this.subjects.meta.pagination;
 
-        console.log('.........');
-        console.log(this.pagination);
-        console.log('.........');
+        // console.log('.........');
+        // console.log(this.pagination);
+        // console.log('.........');
     },
     methods:{
         selectPage(pag) {

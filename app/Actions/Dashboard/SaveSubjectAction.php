@@ -25,13 +25,14 @@ class SaveSubjectAction
         $this->subject->save();
 
         $this->subject = $this->subject->fresh();
+        $this->deleteDocuments(isset($data['to_delete_documents']) ? $data['to_delete_documents'] : []);
         $this->handleAssignProfessors($data['professors']);
         $this->uploadSubjectImage($data['image']);
         $this->uploadSubjectDocuments($data['documents']);
+
         return $this->subject;
 
     }
-
 
     private function handleAssignProfessors($professors): void
     {
@@ -40,6 +41,16 @@ class SaveSubjectAction
         $this->subject->professors()->sync($professorIds);
     }
 
+    private function deleteDocuments($documents)
+    {
+
+        foreach ($documents as $document) {
+            $doc = $this->subject->getMedia(Subject::MEDIA_COLLECTION_DOCUMENTS)->where('id', $document['id'])->first();
+            if ($doc) {
+                $doc->delete();
+            }
+        }
+    }
     private function uploadSubjectImage($image): void
     {
         if ($image == null) {
@@ -50,6 +61,7 @@ class SaveSubjectAction
 
     private function uploadSubjectDocuments($documents): void
     {
+
         foreach ($documents as $document) {
             if ($document instanceof UploadedFile) {
                 $this->subject->addMedia($document)->toMediaCollection(Subject::MEDIA_COLLECTION_DOCUMENTS);
