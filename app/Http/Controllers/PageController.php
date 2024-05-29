@@ -19,7 +19,7 @@ class PageController extends Controller
             ->filter($filters)
             ->whereNotNull('published_at')
             ->orderBy('published_at', 'desc')
-            ->paginate(5);
+            ->paginate(12);
         $subjectData = fractal($subjects,new SubjectTransformer())->includeImage()->toArray();
         return Inertia::render('Index')->with([
             'subjects' => $subjectData

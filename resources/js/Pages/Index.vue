@@ -1,11 +1,19 @@
 <template>
     <Layout>
         <div class="w-full">
-            <div class="flex justify-center">
-                <h1 class="text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold text-gray-700">เอกสารประกอบการสอน</h1>
-                <h1 class="text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold text-blue-600">(PowerPoint)</h1>
+              <div class="grid grid-cols-1 lg:px-10 xl:px-16 ">
+            <div class="flex justify-end">
+                <p class="uppercase btn btn-primary"><a href="pdf/Template-PPT-ARU.potx">ฟอร์มเอกสารประกอบการสอน</a></p>
             </div>
-            <div class="w-full px-4 md:px-6 lg:px-10 xl:px-16 flex ">
+            </div>
+        </div>
+
+        <div class="w-full">
+            <div class="flex justify-center mt-5">
+                <h1 class="text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold text-gray-700">เอกสารประกอบการสอน</h1>
+                <h1 class="text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold text-blue-600"> (PowerPoint)</h1>
+            </div>
+            <div class="w-full px-4 md:px-6 lg:px-10 xl:px-16 flex mt-7">
                <label class="from-control w-full max-w-xs">
                     <input ref="searchInputRef" v-model="search" type="text" class="input input-bordered w-full max-w-xs" placeholder="Search" />
                 </label>

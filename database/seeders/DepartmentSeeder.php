@@ -14,8 +14,17 @@ class DepartmentSeeder extends Seeder
     public function run(): void
     {
         Department::factory()->create([
+            'name' => 'คณะครุศาสตร์'
+        ]);
+        Department::factory()->create([
+            'name' => 'คณะมนุษยศาสตร์และสังคมศาสตร์'
+        ]);
+        Department::factory()->create([
+            'name' => 'คณะวิทยาศาสตร์และเทคโนโลยี'
+        ]);
+        Department::factory()->create([
             'name' => 'คณะวิทยาการจัดการ'
         ]);
-        Department::factory()->count(20)->create();
+        //Department::factory()->count(20)->create();
     }
 }

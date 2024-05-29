@@ -1,17 +1,19 @@
 <template>
     <Layout>
-        <p>
+        <p class="text-xl text-gray-700"> ARUTeaching Materials </p>
+        <p class="text-gray-700 mt-4"> เอกสารประกอบการสอน (PowerPoint) </p>
+        <!-- <p>
             Hello {{ user.id }}, How are you doing?
         </p>
 
         <p>
             Hello {{ number  }}, How are you doing?
-        </p>  
+        </p>
 
-        
+
         <p>
             Hello {{ date  }}, How are you doing?
-        </p>
+        </p> -->
     </Layout>
 
 </template>
@@ -32,7 +34,7 @@ export default {
         },
         date: {
             type: String,
-            default: "" 
+            default: ""
         }
     },
     mounted() {
