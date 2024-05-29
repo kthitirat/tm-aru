@@ -36,11 +36,12 @@
     </div>
 </template>
 <script>
-import {HomeIcon} from "@heroicons/vue/16/solid/index.js";
+//import {HomeIcon} from "@heroicons/vue/16/solid/index.js";
+import {HomeIcon, UserIcon, BookOpenIcon} from "@heroicons/vue/16/solid/index.js";
 
 export default {
     name: "SideBar",
-    components: {HomeIcon},
+    components: {HomeIcon, UserIcon, BookOpenIcon},
     data() {
         return {
             navs: {
@@ -59,14 +60,14 @@ export default {
                 professors: {
                     name: 'Professors',
                     href: this.route('dashboard.professors.index'),
-                    icon: HomeIcon,
+                    icon: UserIcon,
                     routeGroup: 'dashboard.professors.*',
                 },
 
                 subjects: {
                     name: 'Subjects',
                     href: this.route('dashboard.subjects.index'),
-                    icon: HomeIcon,
+                    icon: BookOpenIcon,
                     routeGroup: 'dashboard.subjects.*',
                 }
 
