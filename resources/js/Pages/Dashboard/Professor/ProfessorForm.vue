@@ -1,6 +1,5 @@
 <template>
         <form  class="w-full grid grid-cols-3 gap-4" @submit.prevent="submit">
-
             <div class="col-span-3 w-full">
                 <button @click="$refs.imageInputRef.click()"
                         class="w-60 h-72 border border-dashed flex items-center justify-center" type="button" >
@@ -83,7 +82,7 @@ import { router } from '@inertiajs/vue3';
 
 export default {
     name: "ProfessorForm",
-         props: {
+        props: {
         departments: {
             type: Array,
             required: true

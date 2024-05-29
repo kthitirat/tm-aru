@@ -1,6 +1,6 @@
 <template>
     <Layout>
-        <ProfessorForm :departments="departments" mode="create"/>
+        <ProfessorForm :departments="departments"/>
     </Layout>
 </template>
 

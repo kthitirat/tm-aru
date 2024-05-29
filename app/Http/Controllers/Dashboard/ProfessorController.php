@@ -27,7 +27,7 @@ class ProfessorController extends Controller
     {
         $departments = Department::all();
         $departmentData = fractal($departments, new DepartmentTransformer())->toArray()['data'];
-        return Inertia::render('Dashboard/Subject/Create')->with([
+        return Inertia::render('Dashboard/Professor/Create')->with([
             'departments' => $departmentData
         ]);
     }
