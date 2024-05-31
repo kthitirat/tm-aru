@@ -31,7 +31,7 @@
                     <td>
                         {{ subject.code }}
                     </td>
-                    <td>
+                    <td class="underline">
                         <Link :href="route('dashboard.subjects.edit',subject.raw_id)">
                             <p>{{ subject.name_th }}</p>
                             <p>{{ subject.name_en }}</p>
