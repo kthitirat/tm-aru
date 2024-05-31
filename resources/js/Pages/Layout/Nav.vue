@@ -1,9 +1,9 @@
 <template>
     <div class="w-full">
-        <div class="w-full bg-blue-600 h-10 flex items-center px-4 lg:px-32">
+        <div class="w-full bg-blue-600 h-10 flex items-center px-4 lg:px-32 fixed top-0 left-0 right-0 z-50">
             <p class="text-white">Phranakhon Si Ayutthaya Rajabhat University</p>
         </div>
-        <div class="w-full shadow-md h-20 flex items-center justify-between px-4 lg:px-32">
+        <div class="w-full shadow-md h-20 flex items-center justify-between px-4 lg:px-32 fixed top-10 left-0 right-0 z-50 bg-white">
                 <Link
                     :href="route('index')"
                     class="flex items-center">
@@ -44,3 +44,10 @@ export default {
     }
 };
 </script>
+
+<style scoped>
+/* เพื่อให้แน่ใจว่าส่วนหัวคงที่ไม่บดบังเนื้อหาของหน้าเว็บ */
+.mt-32 {
+    margin-top: 8rem; /* 2.5rem (h-10) + 5rem (h-20) = 7.5rem, เพิ่มเป็น 8rem */
+}
+</style>

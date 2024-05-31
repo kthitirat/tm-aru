@@ -1,10 +1,10 @@
 <template>
     <Layout>
-        <div class="w-full">
-              <div class="grid grid-cols-1 lg:px-10 xl:px-16 ">
-            <div class="flex justify-end">
-                <p class="uppercase btn btn-primary"><a href="pdf/Template-PPT-ARU.potx">ฟอร์มเอกสารประกอบการสอน</a></p>
-            </div>
+        <div class="w-full mt-10">
+            <div class="grid grid-cols-1 lg:px-10 xl:px-16 mt-10 ">
+                <div class="flex justify-end mt-10">
+                    <p class="uppercase btn btn-primary mt-10"><a href="https://www.aru.ac.th/aru-tm/pdf/Template-PPT-ARU.potx">ฟอร์มเอกสารประกอบการสอน</a></p>
+                </div>
             </div>
         </div>
 
