@@ -1,7 +1,7 @@
 <template>
     <Layout>
-        <div class="w-full grid grid-cols-12 gap-4">
-            <div class="col-span-4">
+        <div class="w-full grid grid-cols-12 gap-4 mt-20">
+            <div class="col-span-4 mt-10">
                 <div class="w-full px-5 sm:grid-cols-1 md:px-20 grid grid-cols-2 md:grid-cols-6 lg:grid-cols-2 gap-4">
                     <div v-for="(professor,index) in subject.professors"
                         :class="subject.professors.length === 1 ? 'col-span-2 row-span-2':''">
@@ -12,7 +12,7 @@
                 </div>
             </div>
 
-            <div class="col-span-8">
+            <div class="col-span-8 mt-10">
                 <div class="card w-full bg-base-100 shadow-xl">
                     <div class="card-body">
                         <h2 class="text-2xl font-bold pb-4 border-l-0 border-t-0 border-r-0 text-gray-700">
