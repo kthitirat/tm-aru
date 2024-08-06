@@ -3,7 +3,7 @@
         <nav class="bg-blue-300 fixed top-0 z-30 w-full">
             <div class="navbar relative">
                 <div class="flex-1">
-                    <a class="btn btn-ghost text-xl">Logo</a>
+                    <a class="btn btn-ghost text-xl">ARU</a>
                     <div class="block lg:hidden mt-2">
                             <button class="cursor-pointer" @click="toggleSmallMenu">
                                 <svg class="size-6" fill="none" stroke="currentColor" stroke-width="1.5"
@@ -50,6 +50,12 @@
                             @click="visit('dashboard.users.index')">
                             User
                         </button> -->
+                        <button
+                            class="text-start w-full py-2 hover:bg-gray-500 hover:text-white transition-all ease-in-out duration-300 px-2"
+                            type="button"
+                            @click="visit('dashboard.subjects.index')">
+                            Professors
+                        </button>
                         <button
                             class="text-start w-full py-2 hover:bg-gray-500 hover:text-white transition-all ease-in-out duration-300 px-2"
                             type="button"
