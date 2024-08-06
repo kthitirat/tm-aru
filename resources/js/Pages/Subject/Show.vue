@@ -87,7 +87,7 @@
                         คำอธิบายรายวิชา
                     </h2>
                     <p>
-                        {{ subject.code }} {{ subject.name_th }} {{ subject.unit }}
+                        รายวิชา {{ subject.code }} {{ subject.name_th }} {{ subject.unit }}
                     </p>
                     <p>
                         {{ subject.name_en }}

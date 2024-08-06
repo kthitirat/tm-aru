@@ -1,12 +1,20 @@
 <template>
     <Layout>
-        <div class="w-full">
-            <div class="flex justify-center">
+        <div class="w-full">          
+            <div class="grid grid-cols-1 lg:px-10 xl:px-16 ">
+                <div class="flex justify-end gap-2">
+                    <p class="uppercase btn" style="background-color: #D2D3D4;"><a href="https://www.aru.ac.th/aru-tm/pdf/Template-PPT-ARU.potx">ฟอร์มเอกสารประกอบการสอน</a></p>
+                    <p class="uppercase btn" style="background-color: #D2D3D4;"><a href="https://docs.google.com/forms/d/e/1FAIpQLSdztVAL2DARaIJQVvz3NOS4KGOdAYC2Pih0qtpHUjyLLcdt_g/viewform">ส่งเอกสารประกอบการสอน</a></p>
+                </div>
+                
+            </div>          
+
+            <div class="flex justify-center mt-3">
                 <h1 class="text-2xl md:text-4xl font-bold text-gray-700">เอกสารประกอบการสอน</h1>
-                <h1 class="text-2xl md:text-4xl font-bold text-blue-600">(PowerPoint)</h1>
+                <h1 class="text-2xl md:text-4xl font-bold text-custom-color">(PowerPoint)</h1>
             </div>
 
-            <div class="w-full px-4 md:px-6 lg:px10 xl:px-16 mt-4">
+            <div class="w-full px-4 md:px-6 lg:px10 xl:px-16 mt-6">
                 <label class="form-control w-full max-w-xs relative">
                     <input ref="searchInputRef" v-model="search" type="text" placeholder="ค้นหา..." class="input input-bordered w-full max-w-xs pr-8" />
                     <svg
@@ -103,5 +111,12 @@ export default {
 
 };
 </script>
+
+
+<style scoped>
+    .text-custom-color {
+    color: #A01D29;
+    }
+</style>
 
 
