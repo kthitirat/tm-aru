@@ -23,6 +23,22 @@
                     Login
                 </Link>
             </div>
+ <!-- เมนูมือถือ -->
+ <div class="block lg:hidden">
+                <button @click="toggleMenu" class="text-blue-600">
+                    <!-- ไอคอนสำหรับเมนูมือถือ (hamburger icon) -->
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+                <!-- เมนูที่จะแสดงเมื่อกดปุ่ม -->
+                <div v-if="isMenuOpen" class="absolute bg-white shadow-lg rounded-lg mt-2 right-0">
+                    <a href="https://www.aru.ac.th/asi" class="block px-4 py-2 text-blue-600">Home</a>
+                    <Link class="block px-4 py-2 text-blue-600" :href="route('login')">Login</Link>
+                </div>
+            </div>
+        </div>
+        <div class="mt-32">
 
         </div>
     </div>
@@ -34,17 +50,21 @@ import {Inertia} from "@inertiajs/inertia";
 export default {
     name: "Nav",
     components: {Link},
-    data() {
-        return {};
+     data() {
+        return {
+            isMenuOpen: false,
+        }
     },
     methods: {
         logout() {
             Inertia.post(this.route('logout'));
+        },
+        toggleMenu() {
+            this.isMenuOpen = !this.isMenuOpen;
         }
     }
 };
 </script>
-
 <style scoped>
 /* เพื่อให้แน่ใจว่าส่วนหัวคงที่ไม่บดบังเนื้อหาของหน้าเว็บ */
 .mt-32 {

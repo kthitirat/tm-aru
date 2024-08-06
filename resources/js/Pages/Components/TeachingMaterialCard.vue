@@ -14,6 +14,7 @@
                     <p> {{professor.department.name}}</p>
                 </div>
                 <p>เผยแพร่วันที่ {{ subject.display_published_at }}</p>
+                
                 <div class="mt-2 flex gap-1 items-center justify-end text-blue-600 absolute bottom-4 right-4 text-xs">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5"
                          viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">

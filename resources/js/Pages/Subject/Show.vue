@@ -1,6 +1,6 @@
 <template>
     <Layout>
-        <div class="w-full grid grid-cols-12 gap-4 mt-20">
+        <div class="w-full grid grid-cols-12 gap-4">
             <div class="col-span-4 mt-10">
                 <div class="w-full px-5 sm:grid-cols-1 md:px-20 grid grid-cols-2 md:grid-cols-6 lg:grid-cols-2 gap-4">
                     <div v-for="(professor,index) in subject.professors"
