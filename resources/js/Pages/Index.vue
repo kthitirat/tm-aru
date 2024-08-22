@@ -1,8 +1,8 @@
 <template>
     <Layout>
         <div class="w-full">          
-            <div class="grid grid-cols-1 lg:px-10 xl:px-16 ">
-                <div class="flex justify-end gap-2">
+            <div class="flex flex-col items-center lg:items-end gap-2">
+                <div class="flex justify-center lg:justify-end gap-2">
                     <p class="uppercase btn" style="background-color: #D2D3D4;"><a href="https://www.aru.ac.th/aru-tm/pdf/Template-PPT-ARU.potx">ฟอร์มเอกสารประกอบการสอน</a></p>
                     <p class="uppercase btn" style="background-color: #D2D3D4;"><a href="https://docs.google.com/forms/d/e/1FAIpQLSdztVAL2DARaIJQVvz3NOS4KGOdAYC2Pih0qtpHUjyLLcdt_g/viewform">ส่งเอกสารประกอบการสอน</a></p>
                 </div>
@@ -14,7 +14,7 @@
                 <h1 class="text-2xl md:text-4xl font-bold text-custom-color">(PowerPoint)</h1>
             </div>
 
-            <div class="w-full px-4 md:px-6 lg:px10 xl:px-16 mt-6">
+            <div class="w-full px-4 md:px-6 lg:px-10 xl:px-16 mt-6 flex flex-col lg:flex-row justify-center lg:justify-start">
                 <label class="form-control w-full max-w-xs relative">
                     <input ref="searchInputRef" v-model="search" type="text" placeholder="ค้นหา..." class="input input-bordered w-full max-w-xs pr-8" />
                     <svg
